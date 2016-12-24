@@ -39,6 +39,9 @@ class GIFGenerator:
                 .subclip(start_time, end_time)
                 .resize(self.args.resize[0]))
 
+        if self.args.capital[0]:
+            self.subtitle = self.subtitle.capitalize()
+
         # Create subtitle to be added to sub-clip
         text = (TextClip(self.subtitle,
                          fontsize=float(self.args.font_size[0]),
@@ -91,8 +94,6 @@ class GIFGenerator:
         """
         for i in range(len(self.sub_file)):
             if self.subtitle in self.sub_file[i].text:
-                print(self.subtitle)
-                print(self.sub_file[i].text)
                 return i
         # if subtitle not found in file
         return None
@@ -179,7 +180,7 @@ class GIFGenerator:
                             type=bool,
                             nargs=1,
                             default=[False],
-                            help='Capitalize every letter in subtitle (default is False).')
+                            help='Capitalize first letter in subtitle (default is False).')
 
         # Assign command line arguments to class variable
         self.args = parser.parse_args()
