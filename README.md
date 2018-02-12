@@ -1,4 +1,5 @@
 # GIFGenerator
+Developed during GCI 2016. <br>
 This repository creates a GIF file with subtitles from a video and subtitle file.
 
 ## Setup Instructions
